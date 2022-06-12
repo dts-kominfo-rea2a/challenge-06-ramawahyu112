@@ -21,21 +21,21 @@ let modifyFile3 = (val) => {
 
 const bacaData = (fnCallBack)  => {
   const fs = require('fs');
-  let arrayData= [];
+  const arrayData= [];
   fs.readFile(file1,"utf8",(err, data)=>{
-    modifyFile1(JSON.parse(data));
-    file1 = file1.message.split(' ');
-    arrayData.push(file1[1]);
+    let newArrayData = JSON.parse(data);
+    newArrayData = newArrayData.message.split(' ');
+    arrayData.push(newArrayData[1]);
   })
   fs.readFile(file2,"utf8",(err, data)=>{
-    modifyFile2(JSON.parse(data));
-    file2 = file2[0].message.split(' ');
-    arrayData.push(file2[1]);
+    let newArrayData = JSON.parse(data);
+    newArrayData = newArrayData[0].message.split(' ');
+    arrayData.push(newArrayData[1]);
   })
   fs.readFile(file3,"utf8",(err, data)=>{
-    modifyFile3(JSON.parse(data));
-    file3 = file3[0].data.message.split(' ');
-    arrayData.push(file3[1]);
+    let newArrayData = JSON.parse(data);
+    newArrayData = newArrayData[0].data.message.split(' ');
+    arrayData.push(newArrayData[1]);
     setTimeout(()=> fnCallBack(null,arrayData,10));
     
   })
